@@ -1,8 +1,23 @@
 package co.udea.hero.api.model;
 
+
+import javax.persistence.Column;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
+
+
+@Entity
+@Table (name="heroes")
 public class Hero {
 
+    @Id
+    @Column(name="id")
     private Integer id;
+
+    @NotNull
+    @Column(name = "name")
     private String name;
 
     public Hero(Integer id, String name) {
