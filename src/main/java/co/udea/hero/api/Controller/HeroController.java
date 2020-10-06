@@ -1,6 +1,7 @@
-package co.udea.hero.api.controller;
+package co.udea.hero.api.Controller;
 
 import co.udea.hero.api.model.Hero;
+import co.udea.hero.api.service.HeroService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,8 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/heroes")
 public class HeroController {
 
+    private HeroService heroService;
+
+    public HeroController(HeroService heroService) {
+        this.heroService = heroService;
+    }
+
     @GetMapping("{id}")
     public Hero getHero(Integer id){
-        return  new Hero(1, "Spider-Man");
+        return  this.heroService.getHero(id);
     }
 }
